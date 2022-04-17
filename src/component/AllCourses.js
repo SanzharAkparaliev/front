@@ -30,13 +30,17 @@ const AllCourses=()=>{
     },[])
 
     const [courses,setCourses] = useState([])
+
+    const updateCourses = (id) => {
+        setCourses(courses.filter((c) => c.id != id))
+    }
     return (
         <div>
             <h1>All Course</h1>
             <p>List of courses are as follows</p>
 
             {courses.length > 0 ?
-            courses.map((item) => <Course key={item.id} course={item}/>)
+            courses.map((item) => <Course key={item.id} course={item} update={updateCourses} />)
             :"No courses"
         }    
         </div>
